@@ -5,6 +5,7 @@ from django.db import models
 
 
 class Feed(models.Model):
+    # token is a random number used as password to allow posting to feed
     token = models.IntegerField(default=-1)
     date_created = models.DateTimeField(auto_now_add=True)
     date_last_posted = models.DateTimeField(auto_now=True)
@@ -13,13 +14,13 @@ class Feed(models.Model):
 
     @property
     def name(self):
-        return base64.b32encode(str(self.id))
+        return self.id
 
-    @staticmethod
-    def name_to_id(name):
-        # length of string must be a multiple of 4 for decoding
-        # if it's not, add '=' to the end to pad
-        return base64.b32decode(str(name))
+    #@staticmethod
+    #def name_to_id(name):
+    #    # length of string must be a multiple of 4 for decoding
+    #    # if it's not, add '=' to the end to pad
+    #    return base64.b32decode(str(name))
 
     def save(self, *args, **kwargs):
         if self.token == -1:
