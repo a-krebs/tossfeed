@@ -1,17 +1,23 @@
 from django.contrib.syndication.views import Feed
 from django.core.urlresolvers import reverse
-from feeds import Feed as FeedModel
+from django.shortcuts import get_object_or_404
+from feeds.models import Feed as FeedModel
 
 class TossFeed(Feed):
-    def __init__(self, *args, **kwargs):
-        self.feed = get_object_or_404(FeedModel, pk=kwargs.pop('feed_id', -1))
-        self.title = self.feed.name
-        self.link = reverse('feeds:index', feed_id=self.feed.id)
-        self.description = 'TossFeed'
-        super(TossFeed, self).__init__(*args, **kwargs)
+    def get_object(self, request, feed_id=-1):
+        return FeedModel.objects.get(pk=feed_id)
 
-    def items(self):
-        return self.feed.objects.order_by('-date_posted')
+    def title(self, obj):
+        return obj.name
+
+    def link(self, obj):
+        return reverse('feed', args=(obj.id,))
+
+    def description(self, obj):
+        return 'TossFeed'
+
+    def items(self, obj):
+        return obj.items.order_by('-date_posted')
 
     def item_title(self, item):
         return item.url

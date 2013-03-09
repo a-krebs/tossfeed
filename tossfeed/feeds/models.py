@@ -14,7 +14,7 @@ class Feed(models.Model):
 
     @property
     def name(self):
-        return self.id
+        return str(self.id)
 
     #@staticmethod
     #def name_to_id(name):
