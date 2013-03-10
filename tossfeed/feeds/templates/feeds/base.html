@@ -4,12 +4,15 @@
         <title>
             {% block title %}{% endblock %}
         </title>
+        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}styles/base.css">
         {% block head %}{% endblock %}
     </head>
 <body>
     <div id="wrapper">
         <div id="wrapper-header">
             <div id="header">
+                <h1 id="title">TossFeed</h1>
+                <span id="taglin">Throwaway Atom Feeds</span>
                 {% block header %}{% endblock %}
             </div>
         </div>
