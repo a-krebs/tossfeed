@@ -8,7 +8,7 @@ from feeds.views import TossFeed, CreateFeed
 urlpatterns = patterns('',
     # Examples:
     url(r'^(?P<feed_id>\d+)/$', TossFeed(), name='feed'),
-    url(r'^', CreateFeed.as_view(), name='index'),
+    url(r'^$', CreateFeed.as_view(), name='index'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

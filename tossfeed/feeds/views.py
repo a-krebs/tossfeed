@@ -11,8 +11,7 @@ class TossFeed(Feed):
     """
 
     def get_object(self, request, feed_id=-1):
-        # TODO change this to get_object_or_404
-        return FeedModel.objects.get(pk=feed_id)
+        return get_object_or_404(FeedModel, pk=feed_id)
 
     def title(self, obj):
         return obj.name
