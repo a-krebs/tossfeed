@@ -1,10 +1,10 @@
 from django.contrib.syndication.views import Feed
 from django.views.generic.edit import FormView
-from django.views.generic.detail import DetailView
+from django.views.generic.detail import DetailView, SingleObjectMixin
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, redirect
 from feeds.models import Feed as FeedModel
-from feeds.forms import CreateFeedForm
+from feeds.forms import CreateFeedForm, AddToFeedForm
 
 
 class TossFeed(Feed):
@@ -52,8 +52,34 @@ class CreateFeed(FormView):
         return redirect('feed', args=(feed.id,))
 
 class FeedDetailView(DetailView):
+    """
+    Show details about the feed.
+    """
     
     queryset = FeedModel.objects.all()
     pk_url_kwarg = 'feed_id'
     
     template_name = 'feeds/detail.html'
+
+class AddToFeed(SingleObjectMixin, FormView):
+    """
+    Add a new item to the feed.
+    """
+
+    queryset = FeedModel.objects.all()
+    pk_url_kwarg = 'feed_id'
+    template_name = 'feeds/add.html'
+    form_class = AddToFeedForm
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        return super(AddToFeed, self).get(request, *args, **kwargs)
+    
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        return super(AddToFeed, self).post(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        feed = self.object
+        _ = form.add_to_feed(feed)
+        return redirect('feed', feed.id)
