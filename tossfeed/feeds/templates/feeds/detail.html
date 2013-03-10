@@ -11,6 +11,25 @@
     <div id="token_label">
         <p>Your password for this feed is: <span id="token">{{ object.token }}</span></p>
         <p>Don't lose it, you need to to add to the feed.</p>
+        <p id="bookmarklet">Drag the <a href="
+javascript: (function () {
+    if (!($ = window.jQuery)) {
+        script = document.createElement( 'script' );
+        script.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';
+        script.onload=addToFeed;
+        document.body.appendChild(script);
+    } else {
+        addToFeed();
+    }
+    
+    function addToFeed() {
+        $.ajax('http://' + '{{ host }}' + '/' + '{{ object.name }}' + '/add', {
+            type : 'POST',
+            data : {token : '{{ object.token }}', url : location.href},
+        });
+    }
+}());">
+TossFeed {{ object.name }}</a> button to your bookmarks toolbar to easily add to your feed.</p>
     </div>
 {% endif %}
 <table>
