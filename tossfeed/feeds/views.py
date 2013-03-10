@@ -43,7 +43,7 @@ class CreateFeed(FormView):
     Create a new feed by filling out the form.
     """
 
-    template_name = 'index.html'
+    template_name = 'feeds/index.html'
     form_class = CreateFeedForm
 
     def form_valid(self, form):
