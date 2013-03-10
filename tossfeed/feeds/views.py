@@ -56,7 +56,7 @@ class CreateFeed(FormView):
 
     def form_valid(self, form):
         feed = form.create_feed()
-        return redirect('feed', args=(feed.id,))
+        return redirect('detail', feed.id)
 
 class FeedDetailView(DetailView):
     """
