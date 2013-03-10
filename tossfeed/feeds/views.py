@@ -67,6 +67,13 @@ class FeedDetailView(DetailView):
     pk_url_kwarg = 'feed_id'
     
     template_name = 'feeds/detail.html'
+    
+    def get(self, request, *args, **kwargs):
+        self.host = request.get_host()
+        return super(FeedDetailView, self).get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        return super(FeedDetailView, self).get_context_data(host=self.host, **kwargs)
 
 class AddToFeed(SingleObjectMixin, FormView):
     """
@@ -85,6 +92,7 @@ class AddToFeed(SingleObjectMixin, FormView):
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
         self.object.date_last_posted = datetime.datetime.now()
+        self.object.save()
         return super(AddToFeed, self).post(request, *args, **kwargs)
 
     def form_valid(self, form):
