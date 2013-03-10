@@ -1,4 +1,25 @@
-*.log
+# Python virtual environment #
+##############################
+bin
+include
+lib
+local
+
+# Django #
+##########
+*.py[co]
 *.pot
-*.pyc
+*.db
+*.egg
+*.egg-info
+*.coverage
+*.log
+*.swp
+*~
 local_settings.py
+
+# Eclipse Metadata #
+####################
+.metadata/*
+.project
+.pydevproject
