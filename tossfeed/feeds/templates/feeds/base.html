@@ -4,23 +4,24 @@
         <title>
             {% block title %}{% endblock %}
         </title>
+        {% block head %}{% endblock %}
     </head>
 <body>
     <div id="wrappper">
         <div id="wrapper-header">
             <div id="header">
                 {% block header %}{% endblock %}
-            </div
+            </div>
         </div>
         <div id="wrapper-content">
             <div id="content">
                 {% block content %}{% endblock %}
-            </div
+            </div>
         </div>
         <div id="wrapper-footer">
             <div id="footer">
                 {% block footer %}{% endblock %}
-            </div
+            </div>
         </div>
     </div>
 </body>
