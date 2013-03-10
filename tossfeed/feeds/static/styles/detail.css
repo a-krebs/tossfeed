@@ -1,0 +1,17 @@
+table {
+    text-align: left;
+    width: 50%;
+}
+
+table td.label {
+    font-weight: bold;
+}
+
+#add-link {
+    margin-top: 10px;
+}
+
+#token {
+    font-size: 20pt;
+    font-weight: bold;
+}
