@@ -19,7 +19,7 @@ class AddToFeedForm(forms.Form):
         
         Returns the new item, or None if the token is incorrect.
         """
-        if self.cleaned_data['token'] == feed.token:
+        if self.cleaned_data['token'] == feed._token:
             i = Item.objects.create(feed=feed,url=self.cleaned_data['url'])
             return i
         else:
