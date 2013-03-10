@@ -9,7 +9,7 @@ class Feed(models.Model):
     token = models.IntegerField(default=-1)
     date_created = models.DateTimeField(auto_now_add=True)
     date_last_posted = models.DateTimeField(auto_now=True)
-    date_last_viewed = models.DateTimeField(default=datetime.date.today)
+    date_last_viewed = models.DateTimeField(default=datetime.datetime.now)
     views = models.IntegerField(default=0)
 
     @property
@@ -26,7 +26,7 @@ class Feed(models.Model):
         if self.token == -1:
             # token has not been set
             self.token = randint(2,1000000)
-            super(Feed, self).save(*args, **kwargs)
+        super(Feed, self).save(*args, **kwargs)
 
 class Item(models.Model):
     feed = models.ForeignKey(Feed, related_name='items')
