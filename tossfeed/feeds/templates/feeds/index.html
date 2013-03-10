@@ -4,5 +4,8 @@
 
 {% block content %}
 <h1>Enter the link you would like as the first item on your new feed:</h1>
-{{ form }}
+<form method="post">
+{{ form.as_ul }}
+<input type="submit" value="Get Started">
+</form>
 {% endblock %}
