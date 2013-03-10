@@ -91,3 +91,6 @@ class AddToFeed(SingleObjectMixin, FormView):
         feed = self.object
         _ = form.add_to_feed(feed)
         return redirect('feed', feed.id)
+
+    def get_context_data(self, **kwargs):
+        return super(AddToFeed, self).get_context_data(object=self.object, **kwargs)
