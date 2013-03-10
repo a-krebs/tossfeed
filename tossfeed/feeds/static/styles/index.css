@@ -14,15 +14,3 @@ ul.errorlist {
 ul.errorlist li {
     color: red;
 }
-
-#create-button {
-    margin: 10px;
-    background-color: #5200A3;
-    border: none;
-    color: white;
-    width: 5cm;
-    height: 1.2cm;
-    font-size: 0.5cm;
-    border-radius: 10px;
-    float: right;
-}

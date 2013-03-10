@@ -1,0 +1,26 @@
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul label {
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: middle;
+    *vertical-align: auto;
+    zoom: 1;
+    *display: inline;
+    width: 200px;
+}
+
+#id_url, #id_token {
+    width: 50%;
+}
+
+ul.errorlist {
+    margin: 5px;
+}
+ul.errorlist li {
+    color: red;
+}

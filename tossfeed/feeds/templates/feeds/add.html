@@ -2,10 +2,17 @@
 
 {% block title %}TossFeed{% endblock %}
 
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}styles/add.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}styles/submit-button.css">
+{% endblock %}
+
 {% block content %}
-<h1>Enter the link you would like to add to feed {{ object.name }}:</h1>
+<h2>Post URL to Feed {{ object.name }}:</h2>
 <form method="post">
-{{ form.as_ul }}
-<input type="submit" value="POST">
+    <ul>
+        {{ form.as_ul }}
+    </ul>
+<input id="submit-button" type="submit" value="POST">
 </form>
 {% endblock %}

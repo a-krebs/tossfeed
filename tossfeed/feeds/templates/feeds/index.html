@@ -4,6 +4,7 @@
 
 {% block head %}
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}styles/index.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}styles/submit-button.css">
 {% endblock %}
 
 {% block content %}
@@ -12,6 +13,6 @@
     <ul>
         {{ form.as_ul }}
     </ul>
-    <input id="create-button" type="submit" value="Create Feed">
+    <input id="submit-button" type="submit" value="Create Feed">
 </form>
 {% endblock %}
