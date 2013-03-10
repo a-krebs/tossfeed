@@ -2,10 +2,16 @@
 
 {% block title %}TossFeed{% endblock %}
 
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}styles/index.css">
+{% endblock %}
+
 {% block content %}
-<h1>Enter the link you would like as the first item on your new feed:</h1>
+<h2>Paste a URL to Create a Feed</h2>
 <form method="post">
-{{ form.as_ul }}
-<input type="submit" value="Get Started">
+    <ul>
+        {{ form.as_ul }}
+    </ul>
+    <input id="create-button" type="submit" value="Create Feed">
 </form>
 {% endblock %}

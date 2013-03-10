@@ -12,6 +12,12 @@ h1#title {
     margin: 0;
 }
 
+#tagline {
+    color: black;
+    font-size: 16pt;
+    margin-left: 20px;
+}
+
 #wrapper {
     width: 100%;
     height: 100%;
