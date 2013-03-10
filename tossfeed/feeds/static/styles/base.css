@@ -13,6 +13,10 @@ h1#title {
     margin: 0;
 }
 
+h1 a:link {
+    text-decoration: none;
+}
+
 #tagline {
     color: black;
     font-size: 16pt;
