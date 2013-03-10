@@ -1,8 +1,11 @@
+import datetime
+
 from django.contrib.syndication.views import Feed
 from django.views.generic.edit import FormView
 from django.views.generic.detail import DetailView, SingleObjectMixin
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, redirect
+
 from feeds.models import Feed as FeedModel
 from feeds.forms import CreateFeedForm, AddToFeedForm
 
@@ -13,7 +16,11 @@ class TossFeed(Feed):
     """
 
     def get_object(self, request, feed_id=-1):
-        return get_object_or_404(FeedModel, pk=feed_id)
+        feed = get_object_or_404(FeedModel, pk=feed_id)
+        feed.views = feed.views + 1
+        feed.date_last_viewed = datetime.datetime.now()
+        feed.save()
+        return feed
 
     def title(self, obj):
         return obj.name
@@ -77,6 +84,7 @@ class AddToFeed(SingleObjectMixin, FormView):
     
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
+        self.object.date_last_posted = datetime.date.today
         return super(AddToFeed, self).post(request, *args, **kwargs)
 
     def form_valid(self, form):
