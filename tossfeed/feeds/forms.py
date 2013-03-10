@@ -11,7 +11,7 @@ class CreateFeedForm(forms.Form):
 
 class AddToFeedForm(forms.Form):
     url = forms.URLField(label='URL')
-    token = forms.IntegerField()
+    token = forms.IntegerField(label='Password')
     
     def add_to_feed(self, feed):
         """
