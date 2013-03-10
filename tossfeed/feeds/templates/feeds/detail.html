@@ -3,5 +3,38 @@
 {% block title %}TossFeed{% endblock %}
 
 {% block content %}
-{{ object.token }}
+<table>
+    <tr>
+        <td class="label">
+            Views
+        </td>
+        <td>
+            {{ object.views }}
+        </td>
+    </tr>
+    <tr>
+        <td class="label">
+            Created
+        </td>
+        <td>
+            {{ object.date_created|date:"Y-n-j, G:i" }}
+        </td>
+    </tr>
+    <tr>
+        <td class="label">
+            Last Post
+        </td>
+        <td>
+            {{ object.date_last_posted|date:"Y-n-j, G:i" }}
+        </td>
+    </tr>
+    <tr>
+        <td class="label">
+            Last View
+        </td>
+        <td>
+            {{ object.date_last_viewed|date:"Y-n-j, G:i" }}
+        </td>
+    </tr>
+</table>
 {% endblock %}

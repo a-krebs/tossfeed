@@ -84,7 +84,7 @@ class AddToFeed(SingleObjectMixin, FormView):
     
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
-        self.object.date_last_posted = datetime.date.today
+        self.object.date_last_posted = datetime.datetime.now()
         return super(AddToFeed, self).post(request, *args, **kwargs)
 
     def form_valid(self, form):
