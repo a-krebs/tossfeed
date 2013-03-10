@@ -1,0 +1,7 @@
+ul.errorlist {
+    margin: 5px;
+}
+ul.errorlist li {
+    color: red;
+    font-size: 12pt;
+}

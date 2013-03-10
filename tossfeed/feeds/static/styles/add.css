@@ -17,10 +17,3 @@ ul label {
 #id_url, #id_token {
     width: 50%;
 }
-
-ul.errorlist {
-    margin: 5px;
-}
-ul.errorlist li {
-    color: red;
-}

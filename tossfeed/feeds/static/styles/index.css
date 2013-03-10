@@ -7,10 +7,3 @@ ul {
 #id_url {
     width: 100%;
 }
-
-ul.errorlist {
-    margin: 5px;
-}
-ul.errorlist li {
-    color: red;
-}
