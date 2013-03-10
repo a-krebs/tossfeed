@@ -13,20 +13,16 @@
         <p>Don't lose it, you need to to add to the feed.</p>
         <p id="bookmarklet">Drag the <a href="
 javascript: (function () {
-    if (!($ = window.jQuery)) {
-        script = document.createElement( 'script' );
-        script.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';
-        script.onload=addToFeed;
-        document.body.appendChild(script);
-    } else {
-        addToFeed();
-    }
-    
+    script = document.createElement( 'script' );
+    script.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';
+    script.onload=addToFeed;
+    document.body.appendChild(script);
     function addToFeed() {
         $.ajax('http://' + '{{ host }}' + '/' + '{{ object.name }}' + '/add', {
             type : 'POST',
             data : {token : '{{ object.token }}', url : location.href},
         });
+		document.body.removeChild(script);
     }
 }());">
 TossFeed {{ object.name }}</a> button to your bookmarks toolbar to easily add to your feed.</p>
