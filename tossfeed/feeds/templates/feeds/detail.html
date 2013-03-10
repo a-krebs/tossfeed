@@ -3,6 +3,12 @@
 {% block title %}TossFeed{% endblock %}
 
 {% block content %}
+{% if not object.token_shown %}
+    <div id="token_label">
+        <p>Your password for this feed is: <span id="token">{{ object.token }}</span>.</p>
+        <p>You will need this password to add new items to the feed. It will only be shown this one time, so try not to lose it.</p>
+    </div>
+{% endif %}
 <table>
     <tr>
         <td class="label">
@@ -37,4 +43,7 @@
         </td>
     </tr>
 </table>
+<div id="add-link">
+    <a href="{% url 'add' object.name %}">Post more to this feed</a>
+</div>
 {% endblock %}
