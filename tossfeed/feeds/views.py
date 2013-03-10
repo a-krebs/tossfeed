@@ -1,9 +1,11 @@
 from django.contrib.syndication.views import Feed
 from django.views.generic.edit import FormView
+from django.views.generic.detail import DetailView
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, redirect
 from feeds.models import Feed as FeedModel
 from feeds.forms import CreateFeedForm
+
 
 class TossFeed(Feed):
     """
@@ -48,3 +50,10 @@ class CreateFeed(FormView):
     def form_valid(self, form):
         feed = form.create_feed()
         return redirect('feed', args=(feed.id,))
+
+class FeedDetailView(DetailView):
+    
+    queryset = FeedModel.objects.all()
+    pk_url_kwarg = 'feed_id'
+    
+    template_name = 'feeds/detail.html'

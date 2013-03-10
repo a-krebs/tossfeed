@@ -1,18 +1,9 @@
-from django.conf.urls import patterns, include, url
-from feeds.views import TossFeed, CreateFeed
-
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from django.conf.urls import patterns, url
+from feeds import views
 
 urlpatterns = patterns('',
-    # Examples:
-    url(r'^(?P<feed_id>\d+)/$', TossFeed(), name='feed'),
-    url(r'^$', CreateFeed.as_view(), name='index'),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^(?P<feed_id>\d+)/$', views.TossFeed(), name='feed'),
+    url(r'^(?P<feed_id>\d+)/details$', views.FeedDetailView.as_view(), name='details'),
+    url(r'^(?P<feed_id>\d+)/add$', views.TossFeed(), name='add'),
+    url(r'^$', views.CreateFeed.as_view(), name='index'),
 )
