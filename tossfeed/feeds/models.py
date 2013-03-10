@@ -10,7 +10,7 @@ from django.dispatch.dispatcher import receiver
 class Feed(models.Model):
     # token is a random number used as password to allow posting to feed
     _token = models.IntegerField(default=-1)
-    token_shown = models.BooleanField(default=False)
+    _token_shown = models.BooleanField(default=False)
     date_created = models.DateTimeField(auto_now_add=True)
     date_last_posted = models.DateTimeField(auto_now=True)
     date_last_viewed = models.DateTimeField(default=datetime.datetime.now)
@@ -32,12 +32,15 @@ class Feed(models.Model):
         """
         The token should only ever be shown to the user once.
         """
-        if not self.token_shown:
-            self.token_shown = True
+        return str(self._token)
+    
+    @property
+    def token_shown(self):
+        if not self._token_shown:
+            self._token_shown = True;
             self.save()
-            return str(self._token)
-        else:
-            return None
+            return False
+        return True
 
     #@staticmethod
     #def name_to_id(name):
