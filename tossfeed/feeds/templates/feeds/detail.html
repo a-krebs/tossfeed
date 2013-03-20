@@ -10,8 +10,8 @@
 {% if not object.token_shown %}
     <div id="token_label">
         <p>Your password for this feed is: <span id="token">{{ object.token }}</span></p>
-        <p>Don't lose it, you need to to add to the feed.</p>
-        <p id="bookmarklet">Drag the <a href="
+        <p>Don't lose it, you need it to add to the feed. Alternatively, use the bookmarklet:</p>
+        <p id="bookmarklet">Drag the <span id="bookmarklet-button"><a href="
 javascript: (function () {
     script = document.createElement( 'script' );
     script.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';
@@ -25,7 +25,7 @@ javascript: (function () {
 		document.body.removeChild(script);
     }
 }());">
-TossFeed {{ object.name }}</a> button to your bookmarks toolbar to easily add to your feed.</p>
+TossFeed {{ object.name }}</a></span> button to your bookmarks toolbar. Click it to post to your feed.</p>
     </div>
 {% endif %}
 <div id="feed-link">

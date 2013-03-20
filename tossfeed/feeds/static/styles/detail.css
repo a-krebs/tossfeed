@@ -15,3 +15,17 @@ table td.label {
     font-size: 20pt;
     font-weight: bold;
 }
+
+#bookmarklet-button {
+    padding: 5px 10px;
+    background-color: #5200A3;
+    border: none;
+    color: white;
+    font-size: 0.5cm;
+    border-radius: 10px;
+}
+
+#bookmarklet-button > a {
+    color: white;
+    text-decoration: none;
+}
