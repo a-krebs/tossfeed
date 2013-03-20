@@ -28,6 +28,9 @@ javascript: (function () {
 TossFeed {{ object.name }}</a> button to your bookmarks toolbar to easily add to your feed.</p>
     </div>
 {% endif %}
+<div id="feed-link">
+    <a href="{% url 'feed' object.name %}">Go To Feed</a>
+</div>
 <table>
     <tr>
         <td class="label">
@@ -63,6 +66,6 @@ TossFeed {{ object.name }}</a> button to your bookmarks toolbar to easily add to
     </tr>
 </table>
 <div id="add-link">
-    <a href="{% url 'add' object.name %}">Post more to this feed</a>
+    <a href="{% url 'add' object.name %}">Post More To This Feed</a>
 </div>
 {% endblock %}
