@@ -11,6 +11,13 @@
 {% block content %}
 <h2>Post to Feed {{ object.name }}:</h2>
 <form method="post">
+    {% if token_error %}
+        <ul class="errorlist">
+            <li>
+                Password Incorrect.
+            </li>
+        </ul>
+    {% endif %}
     <ul>
         {{ form.as_ul }}
     </ul>

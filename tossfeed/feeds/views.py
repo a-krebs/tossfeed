@@ -97,8 +97,15 @@ class AddToFeed(SingleObjectMixin, FormView):
 
     def form_valid(self, form):
         feed = self.object
-        _ = form.add_to_feed(feed)
+        new_item = form.add_to_feed(feed)
+        if new_item is None:
+            return self.render_to_response(self.get_context_data(token_error=True, form=form))
         return redirect('feed', feed.id)
 
     def get_context_data(self, **kwargs):
-        return super(AddToFeed, self).get_context_data(object=self.object, **kwargs)
+        token_error = kwargs.pop('token_error', False)
+        return super(AddToFeed, self).get_context_data(
+            object=self.object,
+            token_error=token_error,
+            **kwargs
+        )
